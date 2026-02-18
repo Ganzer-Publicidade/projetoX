@@ -91,7 +91,7 @@ class AudioGenerator:
         try:
             # Selecionar voz apropriada
             if voice_id is None:
-                from src.utils import get_voice_for_language
+                from config.settings import get_voice_for_language
                 voice_id = get_voice_for_language(idioma, 'narrator')
             
             # Gerar áudio
@@ -209,7 +209,7 @@ class AudioGenerator:
             # Alternar entre tipos de voz
             voice_type = voice_types[i % len(voice_types)]
             
-            from src.utils import get_voice_for_language
+            from config.settings import get_voice_for_language
             voice_id = get_voice_for_language(idioma, voice_type)
             
             nome_arquivo = f"personagem_{personagem.replace(' ', '_').lower()}"

@@ -336,8 +336,12 @@ class VideoAutomationPipeline:
         """
         Etapa 4: Anima as cenas com personagens.
         """
+        # MUDANÇA: Permitir execução mesmo sem personagens
         if not self.personagens:
-            raise Exception("Personagens não disponíveis")
+            print("⚠️  Nenhum personagem disponível - gerando vídeo apenas com cenários")
+            print("   O vídeo será criado sem animação de personagens")
+            # Retornar dicionário vazio para permitir continuação do pipeline
+            return {}
         
         generator = AnimationGenerator(api_token=self.replicate_token)
         
