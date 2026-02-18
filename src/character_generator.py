@@ -205,7 +205,38 @@ class CharacterGenerator:
             return None
             
         except Exception as e:
-            print(f"❌ Erro no Replicate: {e}")
+            error_msg = str(e).lower()
+            
+            # Mensagens específicas por tipo de erro
+            if "insufficient" in error_msg and "credit" in error_msg:
+                print("=" * 60)
+                print("❌ REPLICATE SEM CRÉDITOS!")
+                print("   Sua conta Replicate não tem créditos suficientes.")
+                print("   Soluções:")
+                print("   1. Acesse: https://replicate.com/account/billing")
+                print("   2. Adicione créditos ao seu plano")
+                print("   3. Tente novamente após adicionar créditos")
+                print("=" * 60)
+            elif "throttled" in error_msg or "rate" in error_msg or "limit" in error_msg:
+                print("=" * 60)
+                print("⚠️  RATE LIMIT ATINGIDO!")
+                print("   Você excedeu o limite de requisições do Replicate.")
+                print("   Soluções:")
+                print("   1. Aguarde alguns minutos antes de tentar novamente")
+                print("   2. Considere fazer upgrade do plano para maior limite")
+                print("   3. Reduza a frequência de chamadas à API")
+                print("=" * 60)
+            elif "unauthorized" in error_msg or "authentication" in error_msg:
+                print("=" * 60)
+                print("❌ ERRO DE AUTENTICAÇÃO!")
+                print("   Token de API inválido ou expirado.")
+                print("   Soluções:")
+                print("   1. Verifique se o REPLICATE_API_TOKEN está correto")
+                print("   2. Gere um novo token em: https://replicate.com/account/api-tokens")
+                print("=" * 60)
+            else:
+                print(f"❌ Erro no Replicate: {e}")
+            
             return None
     
     def _gerar_com_leonardo(self, prompt: str) -> Optional[str]:
