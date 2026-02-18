@@ -205,3 +205,63 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ============================================================================
+# ProjetoX - Arquivos específicos do projeto
+# ============================================================================
+
+# API Keys reais (NUNCA commitar!)
+config/*_keys.py
+config/api_keys.py
+.env
+*.env
+
+# Arquivos de vídeo e mídia gerados
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# Arquivos de áudio gerados
+*.mp3
+*.wav
+*.aac
+*.ogg
+*.flac
+
+# Imagens temporárias
+temp_*.png
+temp_*.jpg
+temp_*.jpeg
+
+# Checkpoints e cache
+checkpoints/
+cache/
+temp/
+*.pkl
+*.pickle
+
+# Logs do ProjetoX
+projetoX.log
+*.log
+
+# Diretórios de output
+videos/
+output/
+renders/
+
+# Arquivos grandes do Colab
+*.h5
+*.hdf5
+*.model
+*.weights
+
+# Thumbnails do Google Drive
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários de edição
+*_temp.*
+*_backup.*
+*.tmp

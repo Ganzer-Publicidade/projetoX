@@ -1,0 +1,176 @@
+# ============================================================================
+# 🚀 ProjetoX - Dependências Python
+# ============================================================================
+# Sistema de automação de vídeos YouTube com IA
+# Otimizado para Google Colab gratuito
+# Python >= 3.8
+# ============================================================================
+
+# ============================================================================
+# 🤖 APIs de Inteligência Artificial
+# ============================================================================
+
+# OpenAI (ChatGPT) - Geração de roteiros
+openai>=1.12.0
+
+# ElevenLabs - Narração e áudio
+elevenlabs>=0.2.27
+
+# Replicate - Animação e efeitos visuais
+replicate>=0.22.0
+
+
+# ============================================================================
+# 🎬 Processamento de Vídeo e Áudio
+# ============================================================================
+
+# MoviePy - Edição e montagem de vídeo
+moviepy>=1.0.3
+
+# Pydub - Manipulação de áudio
+pydub>=0.25.1
+
+# FFmpeg wrapper para Python
+ffmpeg-python>=0.2.0
+
+
+# ============================================================================
+# 🖼️ Processamento de Imagem
+# ============================================================================
+
+# Pillow - Manipulação de imagens
+Pillow>=10.2.0
+
+# OpenCV - Visão computacional
+opencv-python>=4.9.0
+
+
+# ============================================================================
+# 🌐 Requisições HTTP e APIs
+# ============================================================================
+
+# Requests - Cliente HTTP
+requests>=2.31.0
+
+# HTTPX - Cliente HTTP moderno
+httpx>=0.26.0
+
+
+# ============================================================================
+# 🔧 Utilidades
+# ============================================================================
+
+# Python-dotenv - Variáveis de ambiente
+python-dotenv>=1.0.0
+
+# Tqdm - Progress bars
+tqdm>=4.66.1
+
+# Tenacity - Retry logic
+tenacity>=8.2.3
+
+# Rich - Formatação bonita no console
+rich>=13.7.0
+
+
+# ============================================================================
+# 📊 Processamento de Dados
+# ============================================================================
+
+# NumPy - Computação numérica
+numpy>=1.24.0
+
+# Pandas - Manipulação de dados
+pandas>=2.0.0
+
+
+# ============================================================================
+# 🔐 Segurança e Validação
+# ============================================================================
+
+# Pydantic - Validação de dados
+pydantic>=2.5.0
+
+
+# ============================================================================
+# 📝 Logging e Debugging
+# ============================================================================
+
+# Loguru - Logging avançado
+loguru>=0.7.2
+
+
+# ============================================================================
+# 🎨 Processamento de Mídia Adicional
+# ============================================================================
+
+# Imageio - Leitura/escrita de imagens e vídeos
+imageio>=2.33.0
+
+# Imageio-ffmpeg - Backend FFmpeg
+imageio-ffmpeg>=0.4.9
+
+
+# ============================================================================
+# 🔄 Formato e Serialização
+# ============================================================================
+
+# PyYAML - Arquivos YAML
+PyYAML>=6.0.1
+
+
+# ============================================================================
+# ⏰ Data e Tempo
+# ============================================================================
+
+# Python-dateutil - Manipulação de datas
+python-dateutil>=2.8.2
+
+
+# ============================================================================
+# 📦 Opcional - Para desenvolvimento
+# ============================================================================
+
+# Jupyter - Notebooks (já incluso no Colab)
+# jupyter>=1.0.0
+# ipython>=8.12.0
+
+# Black - Formatação de código
+# black>=23.12.0
+
+# Pytest - Testes
+# pytest>=7.4.0
+
+# ============================================================================
+# 📌 Notas de Instalação
+# ============================================================================
+
+"""
+INSTALAÇÃO RÁPIDA:
+
+No Google Colab:
+!pip install -q -r requirements.txt
+
+Localmente:
+pip install -r requirements.txt
+
+DEPENDÊNCIAS DO SISTEMA (FFmpeg):
+
+O FFmpeg é necessário para processamento de áudio/vídeo.
+
+Google Colab: Já vem instalado
+Ubuntu/Debian: sudo apt-get install ffmpeg
+MacOS: brew install ffmpeg
+Windows: Baixe de https://ffmpeg.org/download.html
+
+VERIFICAR INSTALAÇÃO:
+
+import sys
+print("Python:", sys.version)
+
+import openai
+import elevenlabs
+import replicate
+import moviepy
+print("✅ Todas as dependências principais instaladas!")
+"""
