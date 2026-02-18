@@ -398,7 +398,7 @@ nano config/api_keys.py  # ou use seu editor favorito
 5. **Teste a instalação:**
 
 ```bash
-python -c "from src.pipeline import Pipeline; print('✅ Instalação OK!')"
+python -c "from src.pipeline import VideoAutomationPipeline; print('✅ Instalação OK!')"
 ```
 
 **Instalação com GPU (CUDA):**
@@ -1346,9 +1346,9 @@ Seu computador só precisa de um navegador web moderno.
 **Exemplo:**
 ```python
 # Usar sua voz clonada
-audio = gerador.gerar_audio(
+audio_path = gerador.gerar_narracao(
     texto="Meu texto",
-    voz_customizada="voice_id_da_sua_voz_clonada"
+    voz_id="voice_id_da_sua_voz_clonada"
 )
 ```
 
