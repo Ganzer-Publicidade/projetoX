@@ -1,0 +1,170 @@
+{
+  "catalogo_personagens": {
+    "Davi": {
+      "nome": "Davi",
+      "descricao": "Jovem pastor israelita corajoso, cabelos castanhos, túnica simples, cajado de madeira, expressão determinada",
+      "estilo": "cartoon 3D pixar",
+      "idade_aparente": "16-18 anos",
+      "caracteristicas": [
+        "Expressão confiante",
+        "Olhar determinado",
+        "Roupas de pastor simples",
+        "Cajado na mão"
+      ],
+      "variacoes": [
+        {
+          "variacao_id": 1,
+          "descricao": "Davi com cajado, olhando para cima (orando)",
+          "prompt": "Young shepherd boy David, 3D Pixar style cartoon, brown hair, simple tunic, wooden staff, determined expression, looking up to sky, faith and courage, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/davi_variacao_1.png",
+          "url_original": "https://..."
+        },
+        {
+          "variacao_id": 2,
+          "descricao": "Davi com funda na mão, pronto para batalha",
+          "prompt": "Young shepherd boy David, 3D Pixar style cartoon, brown hair, simple tunic, holding sling, brave expression, ready for battle, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/davi_variacao_2.png",
+          "url_original": "https://..."
+        },
+        {
+          "variacao_id": 3,
+          "descricao": "Davi sorrindo, expressão vitoriosa",
+          "prompt": "Young shepherd boy David, 3D Pixar style cartoon, brown hair, simple tunic, smiling with victorious expression, confident pose, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/davi_variacao_3.png",
+          "url_original": "https://..."
+        }
+      ]
+    },
+    "Golias": {
+      "nome": "Golias",
+      "descricao": "Gigante guerreiro filisteu, 3 metros de altura, armadura de bronze completa, lança enorme, expressão intimidadora",
+      "estilo": "cartoon 3D pixar",
+      "idade_aparente": "35-40 anos",
+      "caracteristicas": [
+        "Muito alto e musculoso",
+        "Armadura de guerra completa",
+        "Expressão ameaçadora",
+        "Lança gigante"
+      ],
+      "variacoes": [
+        {
+          "variacao_id": 1,
+          "descricao": "Golias com armadura completa, segurando lança",
+          "prompt": "Giant warrior Goliath, 3D Pixar style cartoon, very tall and muscular, complete bronze armor, huge spear, intimidating expression, menacing pose, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/golias_variacao_1.png",
+          "url_original": "https://..."
+        },
+        {
+          "variacao_id": 2,
+          "descricao": "Golias gritando desafio, pose agressiva",
+          "prompt": "Giant warrior Goliath, 3D Pixar style cartoon, very tall, armor, shouting challenge, aggressive pose, angry expression, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/golias_variacao_2.png",
+          "url_original": "https://..."
+        }
+      ]
+    },
+    "Rei Saul": {
+      "nome": "Rei Saul",
+      "descricao": "Rei de Israel, coroa dourada, manto real roxo, barba longa, expressão preocupada mas digna",
+      "estilo": "cartoon 3D pixar",
+      "idade_aparente": "45-50 anos",
+      "caracteristicas": [
+        "Coroa de rei dourada",
+        "Manto real roxo e dourado",
+        "Barba longa e bem cuidada",
+        "Postura real"
+      ],
+      "variacoes": [
+        {
+          "variacao_id": 1,
+          "descricao": "Rei Saul sentado no trono, expressão pensativa",
+          "prompt": "King Saul of Israel, 3D Pixar style cartoon, golden crown, royal purple mantle, long beard, thoughtful worried expression, sitting on throne, royal posture, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/rei_saul_variacao_1.png",
+          "url_original": "https://..."
+        },
+        {
+          "variacao_id": 2,
+          "descricao": "Rei Saul em pé, conversando",
+          "prompt": "King Saul of Israel, 3D Pixar style cartoon, golden crown, royal purple mantle, long beard, standing and talking, dignified expression, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/rei_saul_variacao_2.png",
+          "url_original": "https://..."
+        }
+      ]
+    },
+    "Soldado Israelita": {
+      "nome": "Soldado Israelita",
+      "descricao": "Soldado do exército de Israel, armadura simples, escudo e espada, expressão de medo mas leal",
+      "estilo": "cartoon 3D pixar",
+      "idade_aparente": "25-30 anos",
+      "caracteristicas": [
+        "Armadura de couro e metal",
+        "Escudo redondo",
+        "Espada curta",
+        "Expressão preocupada"
+      ],
+      "variacoes": [
+        {
+          "variacao_id": 1,
+          "descricao": "Soldado com escudo e espada, pose defensiva",
+          "prompt": "Israelite soldier, 3D Pixar style cartoon, simple armor, round shield, short sword, worried expression, defensive pose, ancient Israel warrior, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/soldado_variacao_1.png",
+          "url_original": "https://..."
+        }
+      ]
+    },
+    "Moisés": {
+      "nome": "Moisés",
+      "descricao": "Profeta ancião com barba branca longa, túnica simples, cajado sagrado, expressão sábia",
+      "estilo": "cartoon 3D pixar",
+      "uso": "Para outras histórias bíblicas",
+      "variacoes": [
+        {
+          "variacao_id": 1,
+          "descricao": "Moisés segurando tábuas dos 10 mandamentos",
+          "prompt": "Moses the prophet, 3D Pixar style cartoon, long white beard, simple robe, holding stone tablets with ten commandments, wise expression, sacred staff, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/moises_variacao_1.png",
+          "url_original": "https://..."
+        }
+      ]
+    },
+    "Jesus Cristo": {
+      "nome": "Jesus Cristo",
+      "descricao": "Jesus de Nazaré, túnica branca simples, cabelos longos castanhos, barba, expressão serena e amorosa",
+      "estilo": "cartoon 3D pixar",
+      "uso": "Para histórias do Novo Testamento",
+      "variacoes": [
+        {
+          "variacao_id": 1,
+          "descricao": "Jesus com braços abertos, expressão acolhedora",
+          "prompt": "Jesus Christ, 3D Pixar style cartoon, simple white robe, long brown hair, beard, serene loving expression, arms open wide, welcoming pose, divine light, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/jesus_variacao_1.png",
+          "url_original": "https://..."
+        }
+      ]
+    },
+    "Noé": {
+      "nome": "Noé",
+      "descricao": "Noé construtor da arca, barba grisalha, túnica de trabalho, martelo na mão, expressão determinada",
+      "estilo": "cartoon 3D pixar",
+      "uso": "Para história da Arca de Noé",
+      "variacoes": [
+        {
+          "variacao_id": 1,
+          "descricao": "Noé construindo a arca, martelo na mão",
+          "prompt": "Noah the ark builder, 3D Pixar style cartoon, gray beard, work tunic, hammer in hand, determined expression, building pose, high quality render, clean background",
+          "caminho_local": "/content/cache/personagens/noe_variacao_1.png",
+          "url_original": "https://..."
+        }
+      ]
+    }
+  },
+  "metadados": {
+    "total_personagens": 7,
+    "total_variacoes": 11,
+    "nicho": "conteudo_religioso",
+    "estilo_padrao": "cartoon 3D pixar",
+    "resolucao": "1024x1024",
+    "criado_em": "2024-02-18",
+    "notas": "Catálogo de personagens bíblicos reutilizáveis para múltiplos vídeos"
+  }
+}
