@@ -420,27 +420,31 @@ python -c "import torch; print('CUDA:', torch.cuda.is_available())"
 ### Exemplo Básico
 
 ```python
-from src.pipeline import Pipeline
-from config.settings import DEFAULT_CONFIG
-
-# Inicializar pipeline
-pipeline = Pipeline(config=DEFAULT_CONFIG)
+from src.pipeline import VideoAutomationPipeline
 
 # Configurar seu vídeo
 config = {
-    'titulo': 'A História de Davi e Golias',
-    'estilo': 'cartoon_3d',
-    'duracao_total': 300,  # 5 minutos
+    'nicho': 'Histórias Bíblicas',
+    'tema': 'A História de Davi e Golias',
+    'duracao_minutos': 5,
     'idioma': 'pt-BR',
-    'voz': 'Paulo - Narrador Masculino'
+    'api_keys': {
+        'openai': 'sua_chave_openai_aqui',
+        'elevenlabs': 'sua_chave_elevenlabs_aqui',
+        'replicate': 'sua_chave_replicate_aqui'
+    }
 }
 
-# Gerar vídeo completo
-resultado = pipeline.executar_completo(config)
+# Inicializar pipeline
+pipeline = VideoAutomationPipeline(config=config)
 
-print(f"✅ Vídeo gerado: {resultado['caminho_video']}")
-print(f"💰 Custo total: ${resultado['custo_total']:.2f}")
-print(f"⏱️ Tempo: {resultado['tempo_total']:.1f}s")
+# Gerar vídeo completo
+caminho_video = pipeline.executar_completo()
+
+if caminho_video:
+    print(f"✅ Vídeo gerado: {caminho_video}")
+else:
+    print("❌ Erro ao gerar vídeo")
 ```
 
 ### Usando Apenas um Módulo
@@ -448,8 +452,10 @@ print(f"⏱️ Tempo: {resultado['tempo_total']:.1f}s")
 #### Gerar apenas o roteiro:
 
 ```python
+import json
 from src.roteiro_generator import RoteiroGenerator
 
+OPENAI_API_KEY = "sua_chave_aqui"
 gerador = RoteiroGenerator(api_key=OPENAI_API_KEY)
 
 roteiro = gerador.gerar_roteiro(
@@ -459,7 +465,7 @@ roteiro = gerador.gerar_roteiro(
     tom="educativo"
 )
 
-print(roteiro.to_json())
+print(json.dumps(roteiro, indent=2, ensure_ascii=False))
 ```
 
 #### Criar personagens:
@@ -467,16 +473,18 @@ print(roteiro.to_json())
 ```python
 from src.character_generator import CharacterGenerator
 
+REPLICATE_API_TOKEN = "sua_chave_aqui"
 gerador = CharacterGenerator(api_key=REPLICATE_API_TOKEN)
 
-personagem = gerador.criar_personagem(
+personagens = gerador.gerar_personagem(
     nome="Davi",
     descricao="Jovem pastor israelita, corajoso, usando túnica simples",
     estilo="cartoon_3d",
     seed=42  # Para reprodutibilidade
 )
 
-personagem.save('output/davi.png')
+# personagens é uma lista de dicionários com URLs das imagens
+print(f"Personagem gerado: {personagens}")
 ```
 
 #### Gerar narração:
@@ -484,16 +492,17 @@ personagem.save('output/davi.png')
 ```python
 from src.audio_generator import AudioGenerator
 
+ELEVENLABS_API_KEY = "sua_chave_aqui"
 gerador = AudioGenerator(api_key=ELEVENLABS_API_KEY)
 
-audio = gerador.gerar_audio(
+audio_path = gerador.gerar_narracao(
     texto="Era uma vez um jovem pastor chamado Davi...",
-    voz="Paulo",
-    idioma="pt-BR",
-    emocao="inspiracional"
+    voz_id="Paulo",
+    idioma="pt-BR"
 )
 
-audio.save('output/narracao.mp3')
+if audio_path:
+    print(f"Narração salva em: {audio_path}")
 ```
 
 ---
@@ -582,13 +591,14 @@ QUALITY_CONFIG = {
 #### Sistema de Checkpoints
 
 ```python
+from src.pipeline import VideoAutomationPipeline
+
 # O pipeline salva progresso automaticamente
-pipeline = Pipeline(config=config, checkpoint_dir='./checkpoints')
+pipeline = VideoAutomationPipeline(config=config)
 
 # Se algo falhar, retome de onde parou
-resultado = pipeline.executar_completo(
-    usar_checkpoint=True,  # Retoma do último checkpoint
-    salvar_checkpoint=True  # Salva progresso
+caminho_video = pipeline.executar_completo(
+    usar_checkpoint=True  # Retoma do último checkpoint
 )
 ```
 
@@ -851,70 +861,88 @@ num_cenas = 10-12
 - Thumbnails profissionais aumentam CTR em 30-50%
 - 1% de CTR a mais = 30% mais visualizações
 
-### 🛠️ Ferramentas Disponíveis
+### 🛠️ Como Criar Thumbnails
 
-O ProjetoX oferece geração automática de thumbnails em dois modos:
+**Atualmente, o ProjetoX não possui um gerador de thumbnails integrado**, mas você pode criar facilmente usando a biblioteca Pillow (PIL) que já está instalada.
 
-#### Modo 1: Simples (Gratuito) 💚
-
-Utiliza a biblioteca **Pillow** (PIL) para criar thumbnails básicas mas efetivas.
-
-**Recursos:**
-- ✅ Composição com imagens dos personagens
-- ✅ Texto grande e impactante
-- ✅ Emojis para chamar atenção
-- ✅ Bordas e sombras
-- ✅ Cores contrastantes
-- ✅ **Custo:** R$ 0/mês ✅
-
-**Exemplo de código:**
+#### Exemplo: Criar Thumbnail Simples com Pillow
 
 ```python
-from src.thumbnail_generator import ThumbnailGenerator
+from PIL import Image, ImageDraw, ImageFont
+import os
 
-generator = ThumbnailGenerator()
+def criar_thumbnail(
+    titulo: str,
+    imagem_personagem: str = None,
+    cor_fundo: str = "#FF6B35",
+    cor_texto: str = "#FFFFFF",
+    tamanho: tuple = (1280, 720)
+):
+    """
+    Cria uma thumbnail simples mas efetiva.
+    
+    Args:
+        titulo: Título do vídeo (máximo 4 palavras)
+        imagem_personagem: Caminho para imagem do personagem (opcional)
+        cor_fundo: Cor de fundo em hex
+        cor_texto: Cor do texto em hex
+        tamanho: Dimensões (largura, altura)
+    
+    Returns:
+        Image: Objeto PIL Image
+    """
+    # Criar imagem de fundo
+    img = Image.new("RGB", tamanho, cor_fundo)
+    draw = ImageDraw.Draw(img)
+    
+    # Adicionar personagem se fornecido
+    if imagem_personagem and os.path.exists(imagem_personagem):
+        try:
+            char_img = Image.open(imagem_personagem).convert("RGBA")
+            # Redimensionar para caber
+            char_img.thumbnail((tamanho[0] // 2, tamanho[1]))
+            # Posicionar no centro-direita
+            pos_x = tamanho[0] - char_img.width - 50
+            pos_y = (tamanho[1] - char_img.height) // 2
+            img.paste(char_img, (pos_x, pos_y), char_img)
+        except Exception as e:
+            print(f"Aviso: Erro ao carregar personagem: {e}")
+    
+    # Adicionar título
+    try:
+        # Tentar usar fonte system
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 100)
+    except:
+        # Fallback para fonte padrão
+        font = ImageFont.load_default()
+    
+    # Calcular posição do texto (centralizado na esquerda)
+    bbox = draw.textbbox((0, 0), titulo, font=font)
+    text_width = bbox[2] - bbox[0]
+    text_height = bbox[3] - bbox[1]
+    
+    text_x = 50
+    text_y = (tamanho[1] - text_height) // 2
+    
+    # Adicionar sombra
+    draw.text((text_x + 5, text_y + 5), titulo, fill="#000000", font=font)
+    # Texto principal
+    draw.text((text_x, text_y), titulo, fill=cor_texto, font=font)
+    
+    return img
 
-thumbnail = generator.create_thumbnail(
-    title="A História de Davi e Golias",
-    character_image="output/davi.png",
-    background_color="#FF6B35",
-    text_color="#FFFFFF",
-    mode="simple"
-)
 
-thumbnail.save('output/thumbnail.jpg')
-```
-
-#### Modo 2: AI-Powered (Recomendado) ⭐
-
-Utiliza **FLUX** via Replicate para gerar thumbnails ultra-profissionais.
-
-**Recursos:**
-- ✅ Design otimizado para viralização
-- ✅ Análise automática de cores
-- ✅ Composição profissional
-- ✅ Múltiplas variações
-- ✅ Testes A/B integrados
-- ✅ **Custo:** R$ 0.50-2.00 por thumbnail
-
-**Exemplo de código:**
-
-```python
-from src.thumbnail_generator import ThumbnailGenerator
-
-generator = ThumbnailGenerator(api_key=REPLICATE_API_TOKEN)
-
-# Gerar 3 variações para teste A/B
-thumbnails = generator.create_thumbnail(
-    title="A História de Davi e Golias",
-    style="youtube_viral",
-    mode="AI",
-    variations=3,
-    elementos=["personagem", "texto_grande", "expressão_chocada"]
-)
-
-for i, thumb in enumerate(thumbnails):
-    thumb.save(f'output/thumbnail_v{i+1}.jpg')
+# Exemplo de uso
+if __name__ == "__main__":
+    thumbnail = criar_thumbnail(
+        titulo="DAVI E GOLIAS",
+        imagem_personagem="output/personagens/davi.png",
+        cor_fundo="#FF6B35",
+        cor_texto="#FFFFFF"
+    )
+    
+    thumbnail.save("output/thumbnail.jpg", quality=95)
+    print("✅ Thumbnail salva em output/thumbnail.jpg")
 ```
 
 ### 💰 Comparação de Custos
@@ -922,20 +950,9 @@ for i, thumb in enumerate(thumbnails):
 | Opção | Custo Mensal | CTR Médio | Economia |
 |-------|--------------|-----------|----------|
 | Designer profissional | R$ 200-500 | 8-12% | - |
-| ThumbnailGenerator (AI) | R$ 2-8 | 7-11% | **98%** ✅ |
-| ThumbnailGenerator (Simples) | R$ 0 | 5-8% | **100%** ✅ |
+| Ferramentas online (Canva Pro) | R$ 50-100 | 7-10% | 75-80% |
+| Pillow (código acima) | R$ 0 | 5-8% | **100%** ✅ |
 | Sem thumbnail customizada | R$ 0 | 2-4% | ❌ Prejuízo |
-
-### ✨ Funcionalidades
-
-**Recursos automáticos:**
-- ✅ Análise do título para gerar thumbnail relevante
-- ✅ Extração de frame mais expressivo do vídeo
-- ✅ Adição de texto com fontes impactantes
-- ✅ Otimização de cores e contraste
-- ✅ Exportação em resolução ideal (1280x720)
-- ✅ Testes A/B com múltiplas variações
-- ✅ Integração com YouTube API (upload automático)
 
 ### 💡 Dicas para Thumbnails que Viralizem
 
@@ -969,28 +986,13 @@ Mantenha um template visual consistente:
 - Logo no mesmo local
 - Bordas/molduras similares
 
-### 📊 Testes A/B de Thumbnails
+### 🚀 Roadmap: Gerador Automático de Thumbnails
 
-O ProjetoX suporta testes A/B automáticos:
-
-```python
-# Gerar múltiplas variações
-thumbnails = generator.create_multiple_variations(
-    title="Moisés e o Mar Vermelho",
-    variations=[
-        {"emphasis": "personagem", "color": "azul"},
-        {"emphasis": "acao", "color": "vermelho"},
-        {"emphasis": "texto", "color": "amarelo"}
-    ]
-)
-
-# Testar e analisar performance
-melhor_thumb = generator.run_ab_test(
-    thumbnails,
-    duration_days=7,
-    metric="ctr"
-)
-```
+Estamos planejando adicionar um gerador automático de thumbnails na versão 1.5 com:
+- ✨ Geração AI-powered via FLUX/Replicate
+- 🎨 Templates otimizados para viralização
+- 📊 Testes A/B integrados
+- 🤖 Análise automática de cores e composição
 
 ### 🖼️ Exemplos de Thumbnails Geradas
 
@@ -1037,7 +1039,7 @@ melhor_thumb = generator.run_ab_test(
 
 - [x] Pipeline completo de geração de vídeos
 - [x] Integração com ChatGPT, ElevenLabs, Replicate
-- [x] 6 notebooks interativos para Colab
+- [x] 1 notebook principal + 5 notebooks modulares (6 no total)
 - [x] Sistema de cache para economizar custos
 - [x] Geração de personagens 3D cartoon
 - [x] Animação com Stable Video Diffusion
@@ -1045,7 +1047,7 @@ melhor_thumb = generator.run_ab_test(
 - [x] Edição automática com transições
 - [x] Suporte a português, inglês e espanhol
 
-### 🚧 Versão 1.5 (Em Desenvolvimento)
+### 🚧 Versão 1.5 (Planejado)
 
 - [ ] **Gerador de Thumbnails AI** ⭐ PRIORIDADE
 - [ ] Interface web com Gradio
@@ -1106,13 +1108,17 @@ melhor_thumb = generator.run_ab_test(
 
 ```python
 # Teste suas chaves
-from src.utils import validate_api_keys
+from src.utils import validar_api_key
 
-validate_api_keys({
-    'openai': OPENAI_API_KEY,
-    'elevenlabs': ELEVENLABS_API_KEY,
-    'replicate': REPLICATE_API_TOKEN
-})
+# Validar cada chave individualmente
+if validar_api_key(OPENAI_API_KEY, 'openai'):
+    print("✅ OpenAI key válida")
+    
+if validar_api_key(ELEVENLABS_API_KEY, 'elevenlabs'):
+    print("✅ ElevenLabs key válida")
+    
+if validar_api_key(REPLICATE_API_TOKEN, 'replicate'):
+    print("✅ Replicate token válido")
 ```
 
 #### ❌ Erro: "Memória insuficiente"
@@ -1150,9 +1156,9 @@ config = {
 4. Execute etapas individualmente para debugar:
    ```python
    # Teste cada etapa separadamente
-   roteiro = pipeline.gerar_roteiro(tema)
-   personagens = pipeline.criar_personagens(roteiro)
-   audio = pipeline.gerar_audio(roteiro)
+   roteiro = pipeline.gerar_roteiro()
+   personagens = pipeline.gerar_personagens()
+   audio = pipeline.gerar_audios()
    # ... etc
    ```
 
@@ -1163,16 +1169,26 @@ config = {
 **Solução:**
 1. Ative o cache:
    ```python
-   config['optimization']['enable_character_cache'] = True
+   # O cache é habilitado automaticamente via OPTIMIZATION_CONFIG
+   from config.settings import OPTIMIZATION_CONFIG
+   print(OPTIMIZATION_CONFIG['enable_character_cache'])
    ```
 2. Use seed fixo para consistência:
    ```python
+   from config.settings import CHARACTER_CONFIG
    CHARACTER_CONFIG['random_seed'] = 42
    ```
 3. Salve e reutilize personagens:
    ```python
-   pipeline.salvar_personagens('cache/personagens.pkl')
-   pipeline.carregar_personagens('cache/personagens.pkl')
+   import pickle
+   
+   # Salvar personagens em disco
+   with open('cache/personagens.pkl', 'wb') as f:
+       pickle.dump(personagens, f)
+   
+   # Carregar personagens salvos
+   with open('cache/personagens.pkl', 'rb') as f:
+       personagens = pickle.load(f)
    ```
 
 #### ❌ Custo maior que o esperado
@@ -1180,14 +1196,10 @@ config = {
 **Causa:** Configurações não otimizadas
 
 **Solução:**
-1. Use GPT-3.5: `use_gpt35 = True`
-2. Reduza duração de cenas: `cena_duration_seconds = 5`
-3. Ative cache: `enable_cache = True`
+1. Use GPT-3.5: Configure nas API keys
+2. Reduza duração de cenas: Configure em settings.py
+3. Ative cache: Já habilitado por padrão via OPTIMIZATION_CONFIG
 4. Monitore custos nas dashboards das APIs
-5. Use o modo preview para testar:
-   ```python
-   pipeline.executar_completo(preview_mode=True)  # Não gasta créditos
-   ```
 
 #### ❌ Lip-sync desalinhado
 
