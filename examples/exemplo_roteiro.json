@@ -1,0 +1,193 @@
+{
+  "titulo": "A História de Davi e Golias - A Vitória da Fé",
+  "nicho": "conteudo_religioso",
+  "duracao_estimada": "5 minutos",
+  "idioma": "pt-br",
+  "personagens_principais": [
+    "Davi",
+    "Golias",
+    "Rei Saul",
+    "Soldados Israelitas"
+  ],
+  "cenas": [
+    {
+      "numero": 1,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": [],
+      "texto": "Há muito tempo atrás, na antiga terra de Israel, um grande desafio estava prestes a mudar a história do povo de Deus.",
+      "descricao_visual": "Paisagem de Israel antiga ao pôr do sol, montanhas ao fundo"
+    },
+    {
+      "numero": 2,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Davi"],
+      "texto": "Davi era apenas um jovem pastor que cuidava das ovelhas de seu pai nos campos de Belém.",
+      "descricao_visual": "Davi jovem pastor com cajado, cuidando de ovelhas"
+    },
+    {
+      "numero": 3,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Davi"],
+      "texto": "Mas Davi tinha algo especial: uma fé inabalável em Deus e um coração corajoso.",
+      "descricao_visual": "Close-up de Davi olhando para o céu com expressão determinada"
+    },
+    {
+      "numero": 4,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Golias", "Soldados Israelitas"],
+      "texto": "Enquanto isso, no vale de Elá, os exércitos de Israel e dos filisteus estavam em confronto.",
+      "descricao_visual": "Dois exércitos de frente um para o outro no vale"
+    },
+    {
+      "numero": 5,
+      "tipo": "narracao",
+      "duracao": "12s",
+      "personagens": ["Golias"],
+      "texto": "Do lado dos filisteus, havia um gigante chamado Golias. Com quase três metros de altura, ele usava uma armadura pesada e carregava uma enorme lança.",
+      "descricao_visual": "Golias gigante com armadura completa e lança, aparência intimidadora"
+    },
+    {
+      "numero": 6,
+      "tipo": "dialogo",
+      "duracao": "10s",
+      "personagens": ["Golias"],
+      "texto": "Enviem alguém para lutar comigo! Se ele vencer, seremos seus servos. Mas se eu vencer, vocês servirão a nós!",
+      "descricao_visual": "Golias gritando desafiadoramente"
+    },
+    {
+      "numero": 7,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Soldados Israelitas", "Rei Saul"],
+      "texto": "Por quarenta dias, Golias desafiou os israelitas. Ninguém tinha coragem de enfrentá-lo. Todos estavam com medo, até mesmo o rei Saul.",
+      "descricao_visual": "Soldados israelitas com expressões de medo, Rei Saul preocupado"
+    },
+    {
+      "numero": 8,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Davi"],
+      "texto": "Um dia, Davi foi ao campo de batalha levar comida para seus irmãos que eram soldados. Foi quando ele ouviu o desafio de Golias.",
+      "descricao_visual": "Davi chegando ao acampamento com provisões"
+    },
+    {
+      "numero": 9,
+      "tipo": "dialogo",
+      "duracao": "8s",
+      "personagens": ["Davi"],
+      "texto": "Quem é esse filisteu incircunciso para desafiar os exércitos do Deus vivo?",
+      "descricao_visual": "Davi falando com indignação"
+    },
+    {
+      "numero": 10,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Davi", "Rei Saul"],
+      "texto": "Davi se apresentou ao rei Saul e disse que ele mesmo enfrentaria o gigante. O rei ficou surpreso, mas Davi insistiu.",
+      "descricao_visual": "Davi conversando com Rei Saul no tenda real"
+    },
+    {
+      "numero": 11,
+      "tipo": "dialogo",
+      "duracao": "12s",
+      "personagens": ["Davi"],
+      "texto": "O Senhor que me livrou das garras do leão e do urso quando eu guardava as ovelhas, também me livrará deste filisteu!",
+      "descricao_visual": "Davi falando com confiança e fé"
+    },
+    {
+      "numero": 12,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Davi"],
+      "texto": "O rei ofereceu sua armadura a Davi, mas ela era muito pesada. Davi a recusou e escolheu apenas seu cajado, sua funda e cinco pedras lisas do riacho.",
+      "descricao_visual": "Davi pegando pedras do riacho, recusando a armadura"
+    },
+    {
+      "numero": 13,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Davi", "Golias"],
+      "texto": "Quando Golias viu Davi se aproximando, ele se enfureceu. Como ousavam enviar um menino para lutar com ele?",
+      "descricao_visual": "Golias olhando para Davi com desdém e raiva"
+    },
+    {
+      "numero": 14,
+      "tipo": "dialogo",
+      "duracao": "8s",
+      "personagens": ["Golias"],
+      "texto": "Sou eu algum cachorro para você vir até mim com varas? Venha, e darei sua carne às aves do céu!",
+      "descricao_visual": "Golias zombando de Davi"
+    },
+    {
+      "numero": 15,
+      "tipo": "dialogo",
+      "duracao": "15s",
+      "personagens": ["Davi"],
+      "texto": "Você vem contra mim com espada, lança e dardo, mas eu vou contra você em nome do Senhor dos Exércitos, o Deus dos exércitos de Israel, a quem você desafiou!",
+      "descricao_visual": "Davi respondendo com coragem e fé"
+    },
+    {
+      "numero": 16,
+      "tipo": "narracao",
+      "duracao": "12s",
+      "personagens": ["Davi", "Golias"],
+      "texto": "Davi colocou uma pedra em sua funda, girou com força e a arremessou. A pedra voou pelo ar e atingiu Golias bem na testa!",
+      "descricao_visual": "Davi girando a funda, pedra voando em direção a Golias"
+    },
+    {
+      "numero": 17,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Golias"],
+      "texto": "O gigante cambaleou e caiu no chão com um estrondo. Golias estava derrotado!",
+      "descricao_visual": "Golias caindo no chão, nuvem de poeira"
+    },
+    {
+      "numero": 18,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Soldados Israelitas"],
+      "texto": "Os israelitas gritaram de alegria e correram para perseguir os filisteus que fugiam em terror!",
+      "descricao_visual": "Soldados israelitas celebrando vitória, filisteus fugindo"
+    },
+    {
+      "numero": 19,
+      "tipo": "narracao",
+      "duracao": "10s",
+      "personagens": ["Davi"],
+      "texto": "Naquele dia, Davi se tornou um herói em Israel. Sua coragem e fé em Deus derrotaram o impossível.",
+      "descricao_visual": "Davi sendo celebrado pelos soldados, expressão humilde"
+    },
+    {
+      "numero": 20,
+      "tipo": "narracao",
+      "duracao": "15s",
+      "personagens": [],
+      "texto": "A história de Davi e Golias nos ensina que não importa quão grande seja o desafio à nossa frente, com fé em Deus, podemos vencer qualquer batalha. Não são a força física ou as armas que garantem a vitória, mas a confiança no Senhor.",
+      "descricao_visual": "Céu iluminado, imagem inspiradora"
+    }
+  ],
+  "mensagem_final": {
+    "texto": "Que possamos ter a mesma fé e coragem de Davi em nossas próprias batalhas da vida. Deus está conosco!",
+    "call_to_action": "Se inscreva no canal para mais histórias bíblicas inspiradoras!"
+  },
+  "metadados": {
+    "versao": "1.0",
+    "criado_em": "2024-02-18",
+    "autor": "ProjetoX",
+    "tags": [
+      "biblia",
+      "davi",
+      "golias",
+      "fe",
+      "coragem",
+      "historia biblica",
+      "religioso",
+      "cristao"
+    ]
+  }
+}

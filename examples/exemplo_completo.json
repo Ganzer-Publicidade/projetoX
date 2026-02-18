@@ -1,0 +1,200 @@
+{
+  "configuracao_completa": {
+    "projeto": {
+      "nome": "Video Davi e Golias",
+      "nicho": "conteudo_religioso",
+      "tema": "A História de Davi e Golias - A Vitória da Fé",
+      "descricao": "Vídeo animado contando a história bíblica de Davi e Golias com foco em fé e coragem",
+      "duracao_minutos": 5,
+      "idioma": "pt-br"
+    },
+    "api_keys": {
+      "openai": "sk-seu-key-aqui",
+      "elevenlabs": "sua-key-aqui",
+      "replicate": "r8_sua-key-aqui",
+      "notas": "NUNCA compartilhe suas API keys! Configure nos Secrets do Colab"
+    },
+    "otimizacao": {
+      "cena_duration_seconds": 5,
+      "use_gpt35": true,
+      "enable_cache": true,
+      "batch_size": 5,
+      "compress_temp_images": true,
+      "cleanup_temp_files": true,
+      "descricao": "Configurações para economizar custos e melhorar performance"
+    },
+    "video": {
+      "resolution": [1920, 1080],
+      "fps": 30,
+      "bitrate": "5000k",
+      "codec": "libx264",
+      "audio_codec": "aac",
+      "format": "mp4",
+      "preset": "medium"
+    },
+    "audio": {
+      "sample_rate": 44100,
+      "channels": 2,
+      "format": "mp3",
+      "bitrate": "192k",
+      "background_music_volume": -10,
+      "sound_effects_volume": -5
+    },
+    "personagens": {
+      "style": "cartoon_3d",
+      "resolution": 1024,
+      "aspect_ratio": "16:9",
+      "num_variations": 3,
+      "quality": "high",
+      "base_prompt": "high quality 3D cartoon character, pixar style, professional render, clean background"
+    },
+    "ai": {
+      "openai_model": "gpt-3.5-turbo",
+      "openai_temperature": 0.7,
+      "openai_max_tokens": 4000,
+      "elevenlabs_voice_id": "pNInz6obpgDQGcFmaJgB",
+      "elevenlabs_model": "eleven_multilingual_v2",
+      "elevenlabs_stability": 0.5,
+      "elevenlabs_similarity_boost": 0.75,
+      "replicate_animation_model": "stability-ai/stable-video-diffusion:3f0457e4619daac51203dedb472816fd4af51f3149fa7a9e0b5ffcf1b8172438",
+      "replicate_lipsync_model": "devxpy/cog-wav2lip:8d65e3f4f4298520e079198b493c25adfc43c058ffec924f2aefc8010ed25eef",
+      "timeout": 300,
+      "max_retries": 3,
+      "retry_delay": 5
+    },
+    "diretorios": {
+      "output": "/content/drive/MyDrive/ProjetoX_Videos",
+      "temp": "/content/temp",
+      "cache": "/content/cache",
+      "checkpoints": "/content/drive/MyDrive/ProjetoX/checkpoints",
+      "logs": "/content/drive/MyDrive/ProjetoX/logs"
+    },
+    "pipeline": {
+      "etapas": [
+        {
+          "nome": "roteiro",
+          "descricao": "Geração do roteiro com ChatGPT",
+          "custo_estimado": 0.02,
+          "tempo_estimado_minutos": 2,
+          "pular": false
+        },
+        {
+          "nome": "personagens",
+          "descricao": "Criação de personagens com IA",
+          "custo_estimado": 0.20,
+          "tempo_estimado_minutos": 3,
+          "pular": false
+        },
+        {
+          "nome": "audios",
+          "descricao": "Geração de narração com ElevenLabs",
+          "custo_estimado": 0.60,
+          "tempo_estimado_minutos": 2,
+          "pular": false
+        },
+        {
+          "nome": "animacoes",
+          "descricao": "Animação de cenas",
+          "custo_estimado": 1.80,
+          "tempo_estimado_minutos": 15,
+          "pular": false
+        },
+        {
+          "nome": "lipsync",
+          "descricao": "Aplicação de sincronização labial",
+          "custo_estimado": 0.50,
+          "tempo_estimado_minutos": 5,
+          "pular": false
+        },
+        {
+          "nome": "edicao",
+          "descricao": "Edição e montagem final",
+          "custo_estimado": 0.00,
+          "tempo_estimado_minutos": 3,
+          "pular": false
+        }
+      ],
+      "custo_total_estimado": 3.12,
+      "tempo_total_estimado_minutos": 30
+    },
+    "recursos_adicionais": {
+      "incluir_musica": true,
+      "incluir_efeitos_sonoros": false,
+      "aplicar_lipsync": true,
+      "gerar_legendas": false,
+      "incluir_intro_outro": false,
+      "aplicar_transicoes": true,
+      "tipo_transicao": "fade"
+    },
+    "seo_youtube": {
+      "titulo_sugerido": "A História de Davi e Golias 🙏 Fé e Coragem | História Bíblica Animada",
+      "descricao_sugerida": "Conheça a emocionante história de Davi e Golias! 🎯\n\nDescubra como um jovem pastor derrotou um gigante com fé em Deus! Esta história bíblica nos ensina sobre coragem, confiança e o poder da fé.\n\n📖 História completa da Bíblia\n✨ Animação 3D profissional\n🎙️ Narração em português\n\n👉 SE INSCREVA para mais histórias bíblicas!\n👍 DEIXE SEU LIKE se gostou!\n💬 COMENTE sua história bíblica favorita!\n\n#HistoriaBiblica #DaviEGolias #Fe #Biblia #Religioso #Cristao #Deus #Coragem",
+      "tags_sugeridas": [
+        "historia biblica",
+        "davi e golias",
+        "fe",
+        "coragem",
+        "biblia",
+        "religioso",
+        "cristao",
+        "animacao biblica",
+        "deus",
+        "historias da biblia",
+        "antigo testamento",
+        "israel",
+        "rei davi",
+        "gigante golias"
+      ],
+      "categoria": "Education",
+      "thumbnail_sugerida": "Davi com funda vs Golias gigante - cores vibrantes, texto grande"
+    },
+    "monetizacao": {
+      "adequado_para_monetizacao": true,
+      "conteudo_apropriado_familia": true,
+      "sem_direitos_autorais": true,
+      "nicho_cpm": "3-8 USD",
+      "potencial_mensal": "R$ 2.000 - R$ 10.000 (com 100K views/mês)"
+    }
+  },
+  "exemplo_uso_codigo": {
+    "python": "from src.pipeline import VideoAutomationPipeline\n\nconfig = {\n    'nicho': 'conteudo_religioso',\n    'tema': 'A História de Davi e Golias',\n    'duracao_minutos': 5,\n    'idioma': 'pt-br',\n    'api_keys': {\n        'openai': 'sk-...',\n        'elevenlabs': '...',\n        'replicate': 'r8_...'\n    },\n    'optimization': {\n        'cena_duration_seconds': 5,\n        'use_gpt35': True,\n        'enable_cache': True\n    }\n}\n\npipeline = VideoAutomationPipeline(config)\nvideo_path = pipeline.executar_completo()\nprint(f'Video pronto: {video_path}')"
+  },
+  "proximos_videos_sugeridos": [
+    {
+      "titulo": "A História de Moisés e o Mar Vermelho",
+      "nicho": "conteudo_religioso",
+      "duracao": 7,
+      "apelo": "Alto - história visual impactante"
+    },
+    {
+      "titulo": "Noé e a Arca - Como Sobreviver ao Dilúvio",
+      "nicho": "conteudo_religioso",
+      "duracao": 8,
+      "apelo": "Muito Alto - animais e aventura"
+    },
+    {
+      "titulo": "José do Egito - De Escravo a Governador",
+      "nicho": "conteudo_religioso",
+      "duracao": 10,
+      "apelo": "Alto - história de superação"
+    },
+    {
+      "titulo": "Daniel na Cova dos Leões",
+      "nicho": "conteudo_religioso",
+      "duracao": 6,
+      "apelo": "Alto - tensão e fé"
+    },
+    {
+      "titulo": "A Ressurreição de Jesus - O Milagre da Páscoa",
+      "nicho": "conteudo_religioso",
+      "duracao": 8,
+      "apelo": "Muito Alto - história central do cristianismo"
+    }
+  ],
+  "metadados": {
+    "versao_config": "1.0",
+    "criado_em": "2024-02-18",
+    "autor": "ProjetoX",
+    "notas": "Configuração completa de exemplo pronta para usar. Substitua as API keys pelos valores reais antes de executar."
+  }
+}

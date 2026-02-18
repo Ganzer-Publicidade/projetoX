@@ -231,6 +231,22 @@ OPTIMIZATION_CONFIG = {
     
     # Deletar arquivos temporários após uso
     'cleanup_temp_files': True,
+    
+    # ========================================================================
+    # 💰 OTIMIZAÇÕES DE CUSTO (Issue #3)
+    # ========================================================================
+    
+    # Duração padrão de cada cena (reduz custo de animação)
+    'default_cena_duration_seconds': 5,  # Era 10s, agora 5s = 50% economia!
+    
+    # Usar GPT-3.5 em vez de GPT-4 por padrão
+    'use_gpt35_by_default': True,  # 20x mais barato que GPT-4
+    
+    # Cache de personagens (reutilizar entre vídeos)
+    'enable_character_cache': True,
+    
+    # Número de cenas a processar em paralelo
+    'parallel_batch_size': 3,
 }
 
 
